@@ -1,0 +1,49 @@
+From e5a57fb155c0238c46336795902c6bfdf4c6d00b Mon Sep 17 00:00:00 2001
+From: Guido Cella <guido@guidocella.xyz>
+Date: Wed, 12 Jun 2024 21:05:32 +0200
+Subject: [PATCH] use tabs in client.h
+
+Fixes 298949bbc4eae8cedb9cdd11cfc9ebd139ac5d5f.
+---
+ client.h | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/client.h b/client.h
+index 800b867..19861b9 100644
+--- a/client.h
++++ b/client.h
+@@ -172,11 +172,11 @@ client_get_parent(Client *c)
+ {
+ 	Client *p = NULL;
+ #ifdef XWAYLAND
+-    if (client_is_x11(c)) {
+-        if (c->surface.xwayland->parent)
+-            toplevel_from_wlr_surface(c->surface.xwayland->parent->surface, &p, NULL);
+-        return p;
+-    }
++	if (client_is_x11(c)) {
++		if (c->surface.xwayland->parent)
++			toplevel_from_wlr_surface(c->surface.xwayland->parent->surface, &p, NULL);
++		return p;
++	}
+ #endif
+ 	if (c->surface.xdg->toplevel->parent)
+ 		toplevel_from_wlr_surface(c->surface.xdg->toplevel->parent->base->surface, &p, NULL);
+@@ -187,12 +187,12 @@ static inline int
+ client_has_children(Client *c)
+ {
+ #ifdef XWAYLAND
+-    if (client_is_x11(c))
+-        return !wl_list_empty(&c->surface.xwayland->children);
++	if (client_is_x11(c))
++		return !wl_list_empty(&c->surface.xwayland->children);
+ #endif
+-    /* surface.xdg->link is never empty because it always contains at least the
+-     * surface itself. */
+-    return wl_list_length(&c->surface.xdg->link) > 1;
++	/* surface.xdg->link is never empty because it always contains at least the
++	 * surface itself. */
++	return wl_list_length(&c->surface.xdg->link) > 1;
+ }
+ 
+ static inline const char *
