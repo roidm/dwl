@@ -87,6 +87,7 @@ static const Rule rules[] = {
 	/* app_id                    title          tags mask          isfloating   monitor    scratchkey */
 	{ "firefox",                 NULL,             1 << 8,             0,           -1,        0 },
 	{ NULL,                      "scratchpad",     0,                  1,           -1,       's'},
+
 };
 
 /* layout(s) */
