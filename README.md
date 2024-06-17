@@ -4,18 +4,18 @@
 
 ## 📋 Patches
 
-### Autostart
-### Pertag
-### Simpleborders
-### Vanitygaps
-### SceneFX
-### Attachbottom
-### Alwayscenter
-### Ipc
-### CursorTheme
-### NamedScratchpad
-### SetupEnv
-### Foreign-toplevel-management
-### MoveStack
-### MoveCenter
-### Dragmfact
+#### Autostart
+#### Pertag
+#### Simpleborders
+#### Vanitygaps
+#### SceneFX
+#### Attachbottom
+#### Alwayscenter
+#### Ipc
+#### CursorTheme
+#### NamedScratchpad
+#### SetupEnv
+#### Foreign-toplevel-management
+#### MoveStack
+#### MoveCenter
+#### Dragmfact
