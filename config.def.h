@@ -12,7 +12,7 @@ static const unsigned int gappih            = 20; /* horiz inner gap between win
 static const unsigned int gappiv            = 20; /* vert inner gap between windows */
 static const unsigned int gappoh            = 14; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov            = 20; /* vert outer gap between windows and screen edge */
-static const float rootcolor[]		        = COLOR(0x2a2a2aff);
+static const float rootcolor[]              = COLOR(0x2a2a2aff);
 static const float bordercolor[]            = COLOR(0x2c2c2cff);
 static const float focuscolor[]             = COLOR(0x2a2a2aff);
 static const float urgentcolor[]            = COLOR(0x8CCE2Fff);
@@ -79,13 +79,13 @@ static const char *const autostart[] = {
     "WAYLAND_DISPLAY",
     "XDG_CURRENT_DESKTOP",
     NULL,
-	"start", NULL,
+	  "start", NULL,
 	NULL /* terminate */
 };
 
 static const Rule rules[] = {
 	/* app_id                    title          tags mask          isfloating   monitor    scratchkey */
-	{ "firefox",                 NULL,             1 << 8,             0,           -1,        0 },
+	//{ "firefox",                 NULL,             1 << 8,             0,           -1,        0 },
 	{ NULL,                      "scratchpad",     0,                  1,           -1,       's'},
 
 };
@@ -117,7 +117,7 @@ static const struct xkb_rule_names xkb_rules = {
 	.options = "ctrl:nocaps",
 	*/
     .layout = "es",
-	.options = NULL,
+	  .options = NULL,
 };
 
 static const int repeat_rate = 25;
@@ -182,14 +182,14 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] 	    = { "wezterm", NULL };
-static const char *menucmd[]	    = { "wfi", NULL };
-static const char *up_vol[]			= { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",  NULL};
-static const char *down_vol[]	    = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
-static const char *mute_vol[]	    = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL};
-static const char *forward[]	    = { "playerctl", "next", NULL};
-static const char *backward[]	    = { "playerctl", "previous", NULL};
-static const char *play[]			= { "playerctl", "play-pause", NULL};
+static const char *termcmd[]      = { "wezterm", NULL };
+static const char *menucmd[]      = { "wfi", NULL };
+static const char *up_vol[]       = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",  NULL};
+static const char *down_vol[]     = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
+static const char *mute_vol[]     = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL};
+static const char *forward[]      = { "playerctl", "next", NULL};
+static const char *backward[]     = { "playerctl", "previous", NULL};
+static const char *play[]         = { "playerctl", "play-pause", NULL};
 
 /* named scratchpads - First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = { "s", "foot", "-T", "scratchpad", NULL };
@@ -199,66 +199,67 @@ static const Key keys[] = {
 	/* modifier                  key                 function        argument */
 	{ M,                    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ M,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
-	{ A,          			XKB_KEY_t,          togglescratch,  {.v = scratchpadcmd } },
+	{ A,                    XKB_KEY_t,          togglescratch,  {.v = scratchpadcmd } },
 	{ M,                    XKB_KEY_p,          focusortogglescratch, {.v = scratchpadcmd } },
-	{ M|S, 					XKB_KEY_P,          focusortogglematchingscratch, {.v = scratchpadcmd } },
-
+	{ M|S,                  XKB_KEY_P,          focusortogglematchingscratch, {.v = scratchpadcmd } },
 	{ M,                    XKB_KEY_b,          togglebar,      {0} },
 	{ M,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ M,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ M,                    XKB_KEY_h,          setmfact,       {.f = -0.01f} },
 	{ M,                    XKB_KEY_l,          setmfact,       {.f = +0.01f} },
-	{ M|S, 					XKB_KEY_J,          movestack,      {.i = +1} },
-	{ M|S, 					XKB_KEY_K,          movestack,      {.i = -1} },
-	{ M|A,   				XKB_KEY_h,          incgaps,       {.i = +1 } },
-	{ M|A,   				XKB_KEY_l,          incgaps,       {.i = -1 } },
-	{ M|A|S,    			XKB_KEY_H,      	incogaps,      {.i = +1 } },
-	{ M|A|S,    			XKB_KEY_L,     		incogaps,      {.i = -1 } },
-	{ M|A|C,     			XKB_KEY_h,      	incigaps,      {.i = +1 } },
-	{ M|A|C,     			XKB_KEY_l,      	incigaps,      {.i = -1 } },
-	{ M|A,   				XKB_KEY_0,          togglegaps,     {0} },
-	{ M|A|S,    			XKB_KEY_parenright,	defaultgaps,    {0} },
+	{ M|S,                  XKB_KEY_J,          movestack,      {.i = +1} },
+	{ M|S,                  XKB_KEY_K,          movestack,      {.i = -1} },
+	{ M|A,                  XKB_KEY_h,          incgaps,        {.i = +1 } },
+	{ M|A,                  XKB_KEY_l,          incgaps,        {.i = -1 } },
+	{ M|A|S,                XKB_KEY_H,          incogaps,       {.i = +1 } },
+	{ M|A|S,                XKB_KEY_L,          incogaps,       {.i = -1 } },
+	{ M|A|C,                XKB_KEY_h,          incigaps,       {.i = +1 } },
+	{ M|A|C,                XKB_KEY_l,          incigaps,       {.i = -1 } },
+	{ M|A,                  XKB_KEY_0,          togglegaps,     {0} },
+	{ M|A|S,                XKB_KEY_parenright, defaultgaps,    {0} },
 	{ M,                    XKB_KEY_z,          zoom,           {0} },
 	{ M,                    XKB_KEY_Tab,        view,           {0} },
 	{ M,                    XKB_KEY_q,          killclient,     {0} },
 	{ M,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
-	{ M|S, 					XKB_KEY_F,          setlayout,      {.v = &layouts[1]} },
-	{ M|S, 					XKB_KEY_M,          setlayout,      {.v = &layouts[2]} },
+	{ M|S,                  XKB_KEY_F,          setlayout,      {.v = &layouts[1]} },
+	{ M|S,                  XKB_KEY_M,          setlayout,      {.v = &layouts[2]} },
 	{ M,                    XKB_KEY_space,      setlayout,      {0} },
-	{ M|S, 					XKB_KEY_space,      togglefloating, {0} },
+	{ M|S,                  XKB_KEY_space,      togglefloating, {0} },
 	{ M,                    XKB_KEY_e,          togglefullscreen, {0} },
 	{ M,                    XKB_KEY_c,          movecenter,     {0} },
 	{ M,                    XKB_KEY_0,          view,           {.ui = ~0} },
-	{ M|S, 					XKB_KEY_parenright, tag,            {.ui = ~0} },
+	{ M|S,                  XKB_KEY_parenright, tag,            {.ui = ~0} },
 	{ M,                    XKB_KEY_comma,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
 	{ M,                    XKB_KEY_period,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
-	{ M|S, 					XKB_KEY_less,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
-	{ M|S, 					XKB_KEY_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
-	TAGKEYS(          		XKB_KEY_1, XKB_KEY_exclam,                     0),
-	TAGKEYS(          		XKB_KEY_2, XKB_KEY_quotedbl,                   1),
-	TAGKEYS(          		XKB_KEY_3, XKB_KEY_periodcentered,             2),
-	TAGKEYS(          		XKB_KEY_4, XKB_KEY_dollar,                     3),
-	TAGKEYS(          		XKB_KEY_5, XKB_KEY_percent,                    4),
-	TAGKEYS(          		XKB_KEY_6, XKB_KEY_ampersand,                  5),
-	TAGKEYS(          		XKB_KEY_7, XKB_KEY_slash,                      6),
-	TAGKEYS(          		XKB_KEY_8, XKB_KEY_parenleft,                  7),
-	TAGKEYS(          		XKB_KEY_9, XKB_KEY_parenright,                 8),
-	{ M|S,				 	XKB_KEY_Q,          quit,           {0} },
+	{ M|S,                  XKB_KEY_less,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
+	{ M|S,                  XKB_KEY_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+	{ M|S,                  XKB_KEY_Q,          quit,           {0} },
+
+  /*TAGKEYS*/
+    TAGKEYS(                XKB_KEY_1,          XKB_KEY_exclam,                     0),
+	TAGKEYS(                XKB_KEY_2,          XKB_KEY_quotedbl,                   1),
+	TAGKEYS(                XKB_KEY_3,          XKB_KEY_periodcentered,             2),
+	TAGKEYS(                XKB_KEY_4,          XKB_KEY_dollar,                     3),
+	TAGKEYS(                XKB_KEY_5,          XKB_KEY_percent,                    4),
+	TAGKEYS(                XKB_KEY_6,          XKB_KEY_ampersand,                  5),
+	TAGKEYS(                XKB_KEY_7,          XKB_KEY_slash,                      6),
+	TAGKEYS(                XKB_KEY_8,          XKB_KEY_parenleft,                  7),
+	TAGKEYS(                XKB_KEY_9,          XKB_KEY_parenright,                 8),
 
 
 	/*Apps*/
-	{ M,             XKB_KEY_x,      spawn,          SHCMD("nwg-bar -p center -a middle -i 48 -t bar.json -s preset-0.css")},
-	{ M,             XKB_KEY_m,      spawn,          SHCMD("gnome-system-monitor")},
-	{ M,             XKB_KEY_f,      spawn,          SHCMD("thunar")},
-	{ M,             XKB_KEY_g,      spawn,          SHCMD("gthumb")},
-	{ A,   			 XKB_KEY_d,      spawn,          SHCMD("gnome-disks")},
-	{ A,			 XKB_KEY_n,      spawn,          SHCMD("swaync-client -t")},
-	{ A,			 XKB_KEY_p,      spawn,          SHCMD("colorpicker")},
-	{ 0,             XKB_KEY_Print,  spawn,          SHCMD("exec scshot --now")},
-	{ S, 			 XKB_KEY_Print,  spawn,          SHCMD("exec scshot --area")},
-	{ M,             XKB_KEY_n,      spawn,          SHCMD("foot -c $HOME/.config/foot/footnvim.ini -T scratchpad -e nvim")},
-	{ A,		     XKB_KEY_h,      spawn,          SHCMD("foot -T scratchpad -e btop")},
-	{ A|S,		     XKB_KEY_H,      spawn,          SHCMD("foot -T scratchpad -e htop")},
+	{ M,                    XKB_KEY_x,          spawn,          SHCMD("nwg-bar -p center -a middle -i 48 -t bar.json -s preset-0.css")},
+	{ M,                    XKB_KEY_m,          spawn,          SHCMD("gnome-system-monitor")},
+	{ M,                    XKB_KEY_f,          spawn,          SHCMD("thunar")},
+	{ M,                    XKB_KEY_g,          spawn,          SHCMD("gthumb")},
+	{ A,                    XKB_KEY_d,          spawn,          SHCMD("gnome-disks")},
+	{ A,                    XKB_KEY_n,          spawn,          SHCMD("swaync-client -t")},
+	{ A,                    XKB_KEY_p,          spawn,          SHCMD("colorpicker")},
+	{ 0,                    XKB_KEY_Print,      spawn,          SHCMD("exec scshot --now")},
+	{ S,                    XKB_KEY_Print,      spawn,          SHCMD("exec scshot --area")},
+	{ M,                    XKB_KEY_n,          spawn,          SHCMD("foot -c $HOME/.config/foot/footnvim.ini -T scratchpad -e nvim")},
+	{ A,                    XKB_KEY_h,          spawn,          SHCMD("foot -T scratchpad -e btop")},
+	{ A|S,                  XKB_KEY_H,          spawn,          SHCMD("foot -T scratchpad -e htop")},
 
 	/*Multimedia keys*/
 	{ 0,          XF86XK_AudioMute,         spawn,        {.v = mute_vol } },
@@ -280,7 +281,7 @@ static const Key keys[] = {
 
 
 static const Button buttons[] = {
-	{ M, BTN_LEFT,			moveresize,	{.ui = CurMove} },
-	{ M, BTN_MIDDLE,		moveresize,	{.ui = Curmfact} },
-	{ M, BTN_RIGHT,			moveresize,	{.ui = CurResize} },
+	{ M, BTN_LEFT,      moveresize, {.ui = CurMove} },
+	{ M, BTN_MIDDLE,    moveresize, {.ui = Curmfact} },
+	{ M, BTN_RIGHT,     moveresize, {.ui = CurResize} },
 };
